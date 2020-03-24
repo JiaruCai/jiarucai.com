@@ -191,6 +191,18 @@ function openTab(evt, tabName) {
     document.getElementById(tabName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+function switchLanguage() {
+  var all = document.getElementsByTagName("*");
+  for (var i = 0; i < all.length; i++) {
+    if ("otherlang" in all[i].attributes) {
+      var temptext = all[i].attributes["otherlang"].nodeValue;
+      all[i].attributes["otherlang"].nodeValue = all[i].innerHTML;
+      all[i].innerHTML = temptext;
+    }
+  }
+}
+
 </script>
 
 </head>
@@ -202,13 +214,12 @@ function openTab(evt, tabName) {
     <button class="tablinks" onclick="openTab(event, 'Experience')">Experience</button>
     <button class="tablinks" onclick="openTab(event, 'Portfolio')">Portfolio</button>
     <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+    <button class="tablinks" onclick="switchLanguage()" otherlang="English">中文</button>
   </div>
 
   <div id="Home" class="tabcontent" style="display: block;">
-    <name>Jiaru Cai</name>
-    <h>Hello! I'm cute.
-    <br /><br />
-    :)</h>
+    <name otherlang="蔡佳儒">Jiaru Cai</name>
+    <h otherlang="我很可爱">Hello! I'm cute. :)</h>
     <table>
       <tr>
         <td>
@@ -228,13 +239,13 @@ function openTab(evt, tabName) {
     <h>Experience</h>
     <ti>Abcde</ti>
     <te>Hello.</te>
-</div>
+  </div>
 
   <div id="Portfolio" class="tabcontent">
     <h>Portfolio</h>
     <ti><a href="https://project-link.com">Project Name</a></ti>
     <te>Project Description</te>
-</div>
+  </div>
 
   <div id="Contact" class="tabcontent">
     <h>Contact</h>
