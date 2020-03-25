@@ -79,6 +79,12 @@ div.tab button.active {
     width: 75%;
 }
 
+.chinesetabcontent {
+    .tabcontent;
+    text-align: justify;
+    text-justify: inter-ideographic;
+}
+
 name {
   font-size: 60px;
 }
@@ -201,7 +207,21 @@ function switchLanguage() {
       all[i].innerHTML = temptext;
     }
   }
+  if (window.location.hash == "") {
+    window.location.hash = "#chinese"
+  } else {
+    window.location.hash = ""
+  }
 }
+
+function switchIfChinese() {
+  if (window.location.hash == "#chinese" || window.navigator.language.substr(0, 2) == "zh") {
+    window.location.hash = ""
+    switchLanguage();
+  }
+}
+
+window.onload = switchIfChinese;
 
 </script>
 
@@ -210,16 +230,16 @@ function switchLanguage() {
 <body>
 
   <div class="tab">
-    <button class="tablinks active" onclick="openTab(event, 'Home')">Home</button>
-    <button class="tablinks" onclick="openTab(event, 'Experience')">Experience</button>
-    <button class="tablinks" onclick="openTab(event, 'Portfolio')">Portfolio</button>
-    <button class="tablinks" onclick="openTab(event, 'Contact')">Contact</button>
+    <button class="tablinks active" onclick="openTab(event, 'Home')" otherlang="主页">Home</button>
+    <button class="tablinks" onclick="openTab(event, 'Experience')" otherlang="经历">Experience</button>
+    <button class="tablinks" onclick="openTab(event, 'Portfolio')" otherlang="项目">Portfolio</button>
+    <button class="tablinks" onclick="openTab(event, 'Contact')" otherlang="联系方式">Contact</button>
     <button class="tablinks" onclick="switchLanguage()" otherlang="English">中文</button>
   </div>
 
   <div id="Home" class="tabcontent" style="display: block;">
     <name otherlang="蔡佳儒">Jiaru Cai</name>
-    <h otherlang="我很可爱">Hello! I'm cute. :)</h>
+    <h otherlang="<div class=chinesetabcontent>你好！欢迎来到我的主页。我目前是加州大学戴维斯分校的高年级毕业生。我将持有加州大学戴维斯分校的经济系学士学位和计算机副学士学位。我预计毕业时间是2020年6月。我在仅仅一年的时间里修完了加州大学本科要求的所有功课，平均每学期修27学分，并维持3.84的绩点（总绩点4.0）。我特别喜欢博弈论，策略分析和行为经济学，这也是我目前专业的主要发展方向，智能化，数据分析和智能深度学习。</div>">Hello! I am currently a senior undergraduate at UC Davis pursuing an Economics major and Computer Science minor. I am graduating in June 2020. I am spending the last year of my Bachelor's degree at UC Davis with a 3.84 GPA (out of 4.0) and averaging 27 units per quarter. I am mostly passionate for Game Theory, Strategy Analysis, and Behavior Economics. Because of that, I am focusing on finding work related to Artificial Intelligence, Data Analysis, and Deep Learning.</h>
     <table>
       <tr>
         <td>
